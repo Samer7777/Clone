@@ -1,0 +1,17 @@
+@import "./variables";
+@mixin flex($alig-item, $justify-content, $flex-direction) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $alig-item;
+  flex-direction: $flex-direction;
+}
+
+@mixin rounded($width, $height) {
+  width: $width;
+  height: $height;
+  border-radius: 50%;
+}
+
+@mixin overlay {
+  background-color: rgba($color: $secondery-color, $alpha: 0.6);
+}

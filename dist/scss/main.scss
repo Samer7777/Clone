@@ -1,0 +1,688 @@
+@import "./variables";
+@import "./mixin";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap");
+
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family;
+}
+
+button,
+input,
+textarea,
+textarea:focus,
+button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+.main_bg {
+  background-color: $main-color;
+}
+
+.navbar {
+  .logo {
+    color: $white;
+    font-weight: 900;
+    font-size: 24px;
+  }
+  .nav-link {
+    color: $white !important;
+    font-weight: 600;
+    transition: $transition;
+    font-size: 14px;
+    padding-left: 18px !important;
+    &:hover {
+      color: $black !important;
+    }
+  }
+  .navbar-toggler {
+    border: none;
+    span {
+      width: 35px;
+    }
+  }
+}
+
+.home {
+  padding: 56px 0;
+  height: 100vh;
+  @include flex(center, start, row);
+  background: url("../img/homePage.jpg");
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    @include overlay;
+    z-index: 0;
+  }
+  .home_text {
+    position: relative;
+    z-index: 2;
+    h1 {
+      font-size: 4em;
+      font-weight: 700;
+    }
+    .btn {
+      padding: 10px 20px;
+      color: $black;
+      font-weight: 600;
+      transition: $transition;
+
+      &:hover {
+        background-color: $black !important;
+        color: $white;
+      }
+    }
+    .btn:nth-child(2) {
+      margin-left: 10px;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .home {
+    .home_text {
+      h1 {
+        font-size: 2em;
+      }
+    }
+  }
+}
+@media (max-width: 331px) {
+  .home {
+    .home_text {
+      .home_btns {
+        display: flex;
+        flex-direction: column;
+        .btn:nth-child(2) {
+          margin-left: 0;
+          margin-top: 12px;
+        }
+      }
+    }
+  }
+}
+
+/********************* start about style*************************/
+.about {
+  .about_heading {
+    h1 {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+  }
+  .about_offers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 30px 10px;
+    .about_card {
+      text-align: center;
+      box-shadow: $box-shadow;
+      padding: 25px 30px;
+      .card_icon i {
+        font-size: 35px;
+        color: $main-color;
+        margin-bottom: 18px;
+      }
+      h3 {
+        font-weight: 600;
+        margin-bottom: 15px;
+        font-size: 18px;
+      }
+      .card_body {
+        p {
+          color: $text-color;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .about_content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 30px;
+    .about_content_text {
+      padding: 50px 20px 50px 0;
+      height: max-content;
+      h1 {
+        font-weight: 700;
+        margin-bottom: 18px;
+      }
+      p {
+        color: $text-color;
+      }
+    }
+    .learn_more {
+      background-color: $main-color;
+      color: $white;
+      width: max-content;
+      border-radius: 0;
+      padding: 10px 30px;
+      font-weight: 700;
+      transition: $transition;
+
+      &:hover {
+        background-color: $black;
+        color: $white;
+      }
+    }
+  }
+}
+/********************* end about style***************************/
+
+/********************* start services style***************************/
+.services {
+  .services_heading {
+    h1 {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+  }
+  .services_offers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 30px 10px;
+    .services_card {
+      text-align: center;
+      padding: 25px 30px;
+      transition: $transition;
+
+      &:hover {
+        box-shadow: $box-shadow;
+      }
+      .card_icon i {
+        font-size: 35px;
+        color: $main-color;
+        margin-bottom: 18px;
+      }
+      h3 {
+        font-weight: 600;
+        margin-bottom: 15px;
+        font-size: 18px;
+      }
+      .card_body {
+        p {
+          color: $text-color;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+/********************* end services style***************************/
+
+/********************* start banner style***************************/
+.banner {
+  position: relative;
+  padding: 100px 0;
+  background: url("../img/banner.jpg");
+  background-position: center;
+  background-size: cover;
+  @include flex(center, center, row);
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: $main-color, $alpha: 0.7);
+    z-index: 1;
+  }
+  .banner_content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: relative;
+    z-index: 2;
+    .banner_contect_item {
+      display: flex;
+      color: #fff;
+      .item_icon {
+        padding: 10px 10px;
+        i {
+          font-size: 40px;
+        }
+      }
+      .item_text {
+        p {
+          margin-bottom: 0;
+          font-size: 20px;
+          font-weight: 600;
+          span {
+            font-weight: 700;
+            font-size: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+/********************* end banner style***************************/
+
+/********************* start project style***************************/
+.project {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  .project_heading {
+    margin-bottom: 30px;
+    h1 {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+  }
+  .project_content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    .project_item {
+      overflow: hidden;
+      position: relative;
+      &:nth-child(1) {
+        grid-row: span 2;
+        max-height: 497px;
+      }
+      &:not(:nth-child(1)) {
+        max-height: 243px;
+      }
+
+      .item_img {
+        img {
+          object-fit: cover;
+          height: 100% !important;
+        }
+      }
+      .item_text {
+        position: absolute;
+        width: 100%;
+        height: 80%;
+        left: 0;
+        bottom: -100%;
+        background-color: rgba($color: $main-color, $alpha: 0.8);
+        @include flex(center, center, column);
+        text-align: center;
+        transition: $transition;
+        color: $white;
+        a {
+          margin-bottom: 15px;
+          i {
+            font-size: 22px;
+          }
+        }
+        h3 {
+          font-weight: 800;
+        }
+      }
+      &:hover .item_text {
+        bottom: 0;
+      }
+    }
+  }
+}
+/********************* end project style***************************/
+
+/********************* start team style***************************/
+.team {
+  background-color: $main-color;
+  padding: 80px 20px !important;
+  .team_heading {
+    margin-bottom: 30px;
+    color: $white;
+    h1 {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+  }
+  .team_item {
+    position: relative;
+    overflow: hidden;
+    .team_img {
+      img {
+        min-height: 300px;
+        object-fit: cover;
+      }
+    }
+    .team_text {
+      position: absolute;
+      width: 100%;
+      height: 40%;
+      left: 0;
+      bottom: -18%;
+      background-color: $black;
+      color: $white;
+      padding: 5px 10px;
+      transition: $transition;
+      &:hover {
+        bottom: 0;
+      }
+      h3 {
+        font-size: 20px;
+      }
+      .text_icons {
+        @include flex(center, start, row);
+        margin-top: 12px;
+        i {
+          padding: 0 6px;
+          font-size: 26px;
+          transition: $transition;
+          &:hover {
+            color: $main-color;
+          }
+        }
+      }
+    }
+  }
+}
+/********************* end team style***************************/
+
+/********************* start pricing style***************************/
+.pricing {
+  .pricing_heading {
+    margin-bottom: 30px;
+    h1 {
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+  }
+  .price_card {
+    text-align: center;
+    box-shadow: $box-shadow;
+    padding-bottom: 15px;
+    position: relative;
+    margin-bottom: 20px;
+    .star {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      i {
+        font-size: 20px;
+        color: goldenrod;
+      }
+    }
+    .price_header {
+      padding: 15px 30px;
+      background-color: $main-color;
+      @include flex(center, center, column);
+      color: $white;
+      h3 {
+        font-weight: 600;
+      }
+      span {
+        font-weight: 600;
+        margin-bottom: 12px;
+        font-size: 18px;
+      }
+      p {
+        font-weight: 700;
+      }
+    }
+    .price_body {
+      padding: 15px 30px;
+    }
+    .price_footer {
+      .price_btn {
+        background-color: $main-color;
+        color: $white;
+        padding: 10px 30px;
+        border-radius: 0;
+        font-weight: 700;
+        transition: $transition;
+        &:hover {
+          background-color: $black;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+/********************* end pricing style***************************/
+
+/********************* start Blog style***************************/
+.blog {
+  .blog_heading {
+    margin-bottom: 40px;
+    h1 {
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+  }
+  .blog_card {
+    box-shadow: $box-shadow;
+    border-radius: 14px;
+    img {
+      max-height: 320px;
+      object-fit: cover;
+    }
+    .blog_card_body {
+      padding: 10px 20px;
+    }
+    &:hover {
+      .blog_card_body p:nth-child(2) {
+        color: $main-color;
+      }
+    }
+    .blog_card_body p:nth-child(2) {
+      font-weight: 600;
+      font-size: 14px;
+      transition: $transition;
+      color: $black;
+    }
+    .blog_card_body p:nth-child(1) {
+      font-weight: 600;
+    }
+  }
+  .side_text {
+    padding: 12px 0px 0px 30px;
+    h3 {
+      font-weight: 800;
+      margin-bottom: 20px;
+      font-size: 26px;
+      color: $black;
+    }
+    p {
+      margin-bottom: 5px;
+      span {
+        color: $main-color;
+        font-weight: 700;
+      }
+    }
+    a {
+      display: block;
+      margin-bottom: 20px;
+      transition: $transition;
+      font-weight: 500;
+      &:hover {
+        color: $main-color;
+      }
+    }
+  }
+}
+/********************* end Blog style***************************/
+
+/********************* start contact style***************************/
+.contact {
+  position: relative;
+  overflow: hidden;
+  @include flex(center, center, column);
+  .circule {
+    position: absolute;
+    @include rounded(600px, 600px);
+    background-color: $main-color;
+    z-index: -1;
+  }
+  .down_right {
+    left: -300px;
+    bottom: -300px;
+  }
+  .up_lef {
+    right: -300px;
+    top: -300px;
+  }
+  .contact_form {
+    box-shadow: $box-shadow;
+    padding: 50px 40px;
+    color: $black;
+    background-color: $white;
+    .contact_form_heading {
+      margin-bottom: 20px;
+      h4 {
+        font-size: 16px;
+        font-weight: 500;
+      }
+      h1 {
+        font-weight: 700;
+      }
+    }
+    .form-control-sm {
+      border: 0;
+      border-radius: 0;
+      border-bottom: 1px solid $black;
+      padding-left: 0;
+      transition: $transition;
+      &:focus {
+        border-color: $main-color;
+      }
+    }
+    .submit_btn {
+      display: block;
+      padding: 10px 20px;
+      background-color: $main-color;
+      color: $white;
+      transition: $transition;
+      font-weight: 600;
+      &:hover {
+        background-color: $black;
+      }
+    }
+    .call {
+      padding-top: 150px;
+      padding-left: 10px;
+      display: flex;
+      flex-direction: column;
+      h3 {
+        font-size: 18px;
+        font-weight: 600;
+      }
+      a {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        transition: $transition;
+        &:hover {
+          color: $main-color;
+        }
+        i {
+          color: $main-color;
+          font-size: 18px;
+          padding-right: 5px;
+        }
+      }
+    }
+  }
+}
+/********************* end contact style***************************/
+
+/********************* start footer style***************************/
+.footer {
+  .copy {
+    span {
+      color: $main-color;
+      font-weight: 700;
+    }
+  }
+  .icons {
+    a {
+      i {
+        color: $main-color;
+        font-size: 24px;
+        opacity: 0.6;
+        padding: 10px 5px;
+        transition: $transition;
+      }
+      &:hover {
+        i {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+/********************* end footer style***************************/
+
+/********************* start responsive style***************************/
+@media (max-width: 991px) {
+  .about .about_content {
+    grid-template-columns: 1fr;
+  }
+  .services .services_offers,
+  .project .project_content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .banner .banner_content {
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .team .team_item {
+    margin-bottom: 20px;
+  }
+  .team .team_item .team_img img {
+    min-width: 100%;
+  }
+  .team .team_item .team_text {
+    height: 35%;
+  }
+  .pricing .price_card,
+  .blog .blog_card {
+    margin-bottom: 30px;
+  }
+  .contact {
+    padding: 30px 20px;
+  }
+  .contact .contact_form .call {
+    padding-top: 45px;
+  }
+}
+@media (max-width: 767px) {
+  .about .about_offers {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 467px) {
+  .services .services_offers,
+  .project .project_content {
+    grid-template-columns: 1fr;
+  }
+  .banner .banner_content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+/********************* end responsive style***************************/
